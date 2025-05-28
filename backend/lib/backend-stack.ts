@@ -22,7 +22,18 @@ export class BackendStack extends cdk.Stack {
     const userPool = new cognito.UserPool(this, 'UserPool', {
       selfSignUpEnabled: true,
       signInAliases: { email: true },
+      autoVerify: { email: true },
+      accountRecovery: cognito.AccountRecovery.EMAIL_ONLY,
     });
+
+    const userPoolClient = new cognito.UserPoolClient(this, 'UserPoolClient', {
+      userPool,
+      authFlows: {
+        userPassword: true, // Enables username+password login
+      },
+    });
+
+
 
     // Lambda function
     const notesFunction = new lambdaNode.NodejsFunction(this, 'NotesFunction', {
@@ -46,5 +57,14 @@ export class BackendStack extends cdk.Stack {
     const notes = api.root.addResource('notes');
     notes.addMethod('GET', new apigateway.LambdaIntegration(notesFunction));
     notes.addMethod('POST', new apigateway.LambdaIntegration(notesFunction));
+
+    new cdk.CfnOutput(this, 'UserPoolId', {
+      value: userPool.userPoolId,
+    });
+
+    new cdk.CfnOutput(this, 'UserPoolClientId', {
+      value: userPoolClient.userPoolClientId,
+    });
+
   }
 }
