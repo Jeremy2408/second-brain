@@ -1,0 +1,180 @@
+{
+  "version": "41.0.0",
+  "artifacts": {
+    "SecondBrainBackend.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "SecondBrainBackend.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "SecondBrainBackend": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "SecondBrainBackend.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4de9744f199bdd04cbe069f2584b5284dda435004509c4bd0f8755d8db15feb4.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "SecondBrainBackend.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "SecondBrainBackend.assets"
+      ],
+      "metadata": {
+        "/SecondBrainBackend/NotesTable/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesTableD0D0D2F1"
+          }
+        ],
+        "/SecondBrainBackend/UserPool/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UserPool6BA7E5F2"
+          }
+        ],
+        "/SecondBrainBackend/NotesFunction/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesFunctionServiceRole84A62C41"
+          }
+        ],
+        "/SecondBrainBackend/NotesFunction/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesFunctionServiceRoleDefaultPolicyEC0CB8CF"
+          }
+        ],
+        "/SecondBrainBackend/NotesFunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesFunction39171EF9"
+          }
+        ],
+        "/SecondBrainBackend/NotesAPI/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesAPIAA73EE2D"
+          }
+        ],
+        "/SecondBrainBackend/NotesAPI/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesAPICloudWatchRoleC8D8C1B8"
+          }
+        ],
+        "/SecondBrainBackend/NotesAPI/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesAPIAccount7D4E9450"
+          }
+        ],
+        "/SecondBrainBackend/NotesAPI/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesAPIDeployment93A7F7DDb302a228acab03f6ea4932e157807f72"
+          }
+        ],
+        "/SecondBrainBackend/NotesAPI/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesAPIDeploymentStageprodB1C09F52"
+          }
+        ],
+        "/SecondBrainBackend/NotesAPI/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesAPIEndpoint78EF0A1D"
+          }
+        ],
+        "/SecondBrainBackend/NotesAPI/Default/notes/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesAPInotes9DA335D7"
+          }
+        ],
+        "/SecondBrainBackend/NotesAPI/Default/notes/GET/ApiPermission.SecondBrainBackendNotesAPI7A14A04B.GET..notes": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesAPInotesGETApiPermissionSecondBrainBackendNotesAPI7A14A04BGETnotes54283BDD"
+          }
+        ],
+        "/SecondBrainBackend/NotesAPI/Default/notes/GET/ApiPermission.Test.SecondBrainBackendNotesAPI7A14A04B.GET..notes": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesAPInotesGETApiPermissionTestSecondBrainBackendNotesAPI7A14A04BGETnotesDB692839"
+          }
+        ],
+        "/SecondBrainBackend/NotesAPI/Default/notes/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesAPInotesGET75127E92"
+          }
+        ],
+        "/SecondBrainBackend/NotesAPI/Default/notes/POST/ApiPermission.SecondBrainBackendNotesAPI7A14A04B.POST..notes": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesAPInotesPOSTApiPermissionSecondBrainBackendNotesAPI7A14A04BPOSTnotesC59ACC7C"
+          }
+        ],
+        "/SecondBrainBackend/NotesAPI/Default/notes/POST/ApiPermission.Test.SecondBrainBackendNotesAPI7A14A04B.POST..notes": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesAPInotesPOSTApiPermissionTestSecondBrainBackendNotesAPI7A14A04BPOSTnotes304E8123"
+          }
+        ],
+        "/SecondBrainBackend/NotesAPI/Default/notes/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NotesAPInotesPOST16A9CB0B"
+          }
+        ],
+        "/SecondBrainBackend/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/SecondBrainBackend/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/SecondBrainBackend/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/SecondBrainBackend/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "SecondBrainBackend"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  },
+  "minimumCliVersion": "2.1005.0"
+}
