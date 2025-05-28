@@ -1,1 +1,24 @@
+# Node.js
 node_modules/
+npm-debug.log*
+
+# CDK
+cdk.out/
+
+
+# Lambda build output
+*.js
+*.js.map
+
+# TypeScript build
+dist/
+build/
+.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+
+# OS-specific
+.DS_Store
+Thumbs.db

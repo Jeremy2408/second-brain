@@ -1,5 +1,6 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
+import * as lambdaNode from 'aws-cdk-lib/aws-lambda-nodejs';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
@@ -24,14 +25,15 @@ export class BackendStack extends cdk.Stack {
     });
 
     // Lambda function
-    const notesFunction = new lambda.Function(this, 'NotesFunction', {
+    const notesFunction = new lambdaNode.NodejsFunction(this, 'NotesFunction', {
+      entry: 'lambdas/notes.ts',          
+      handler: 'handler',                
       runtime: lambda.Runtime.NODEJS_18_X,
-      handler: 'notes.handler',
-      code: lambda.Code.fromAsset('lambdas'),
       environment: {
         NOTES_TABLE_NAME: notesTable.tableName,
       },
     });
+
 
     // Permissions
     notesTable.grantReadWriteData(notesFunction);
