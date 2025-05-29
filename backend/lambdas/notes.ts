@@ -1,8 +1,27 @@
-import { APIGatewayEvent, Context } from 'aws-lambda';
+import { APIGatewayProxyHandlerV2 } from 'aws-lambda';
 
-export const handler = async (event: APIGatewayEvent, context: Context) => {
+export const handler: APIGatewayProxyHandlerV2 = async (event) => {
+  if (event.requestContext.http.method === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+        'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+      },
+      body: ''
+    };
+  }
+
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: 'Hello from Lambda!', method: event.httpMethod }),
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+      'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+    },
+    body: JSON.stringify({
+      message: 'Success from /notes!'
+    })
   };
 };

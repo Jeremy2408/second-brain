@@ -26,7 +26,7 @@ export class BackendStack extends cdk.Stack {
       accountRecovery: cognito.AccountRecovery.EMAIL_ONLY,
     });
 
-    const userPoolClient = new cognito.UserPoolClient(this, 'UserPoolClient', {
+    const userPoolClient = new cognito.UserPoolClient(this, 'UserPoolClientV2', {
       userPool,
       authFlows: {
         userPassword: true, // Enables username+password login
